@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Installs
+        run: "deno install"
+
+      - name: Compile check
+        run: "deno compile main.ts"
+
+      - name: Type check
+        run: "deno check ."
+
+      - name: Lint check
+        run: "deno lint"
+
+      - name: Formatting check
+        run: "deno fmt --check"
+
+      - name: Test step
+        run: "deno test"
