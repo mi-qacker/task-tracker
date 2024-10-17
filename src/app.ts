@@ -1,31 +1,30 @@
-export const COMMANDS = {
-  Add: "add",
-  Update: "update",
-  Delete: "delete",
-  List: "list",
-  MarkInProgress: "mark-in-progress",
-  MarkDone: "mark-done",
-};
+import { COMMANDS } from "./types.ts";
+import {
+  validateIdArgs,
+  validateIdTextArgs,
+  validateTaskListArgs,
+  validateTextArgs,
+} from "./validator.ts";
 
 export const app = (command: string, args: string[]) => {
   switch (command) {
     case COMMANDS.Add:
-      console.log("Add task", args);
+      validateTextArgs(args);
       break;
     case COMMANDS.Update:
-      console.log("Update task", args);
+      validateIdTextArgs(args);
       break;
     case COMMANDS.Delete:
-      console.log("Delete task", args);
+      validateIdArgs(args);
       break;
     case COMMANDS.List:
-      console.log("List of tasks", args);
+      validateTaskListArgs(args);
       break;
     case COMMANDS.MarkInProgress:
-      console.log("Mark in progress of tasks", args);
+      validateIdArgs(args);
       break;
     case COMMANDS.MarkDone:
-      console.log("Mark done of tasks", args);
+      validateIdArgs(args);
       break;
     case "--help":
       console.log("Available commands:", Object.values(COMMANDS));
