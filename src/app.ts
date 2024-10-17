@@ -1,4 +1,4 @@
-const COMMANDS = {
+export const COMMANDS = {
   Add: "add",
   Update: "update",
   Delete: "delete",
