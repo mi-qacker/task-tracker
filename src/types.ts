@@ -14,3 +14,16 @@ export const TASKS_LISTS = Object.freeze({
 });
 
 export type TaskList = (typeof TASKS_LISTS)[keyof typeof TASKS_LISTS];
+
+export type TaskStatus = TaskList;
+export type Task = {
+  id: string;
+  description: string;
+  status: TaskStatus;
+  createdAt: Date;
+  updatedAt?: Date;
+};
+
+export type Storage = {
+  tasks: Task[];
+};

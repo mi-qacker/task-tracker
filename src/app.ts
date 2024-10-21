@@ -5,11 +5,18 @@ import {
   validateTaskListArgs,
   validateTextArgs,
 } from "./validator.ts";
+import { addTask } from "./commands/add.ts";
+import { getStorage } from "./storage/index.ts";
 
 export const app = (command: string, args: string[]) => {
   switch (command) {
     case COMMANDS.Add:
-      validateTextArgs(args);
+      {
+        const { text } = validateTextArgs(args);
+        const newTask = addTask(text);
+        getStorage();
+        console.log(newTask);
+      }
       break;
     case COMMANDS.Update:
       validateIdTextArgs(args);
