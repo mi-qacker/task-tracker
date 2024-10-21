@@ -23,3 +23,7 @@ export type Task = {
   createdAt: Date;
   updatedAt?: Date;
 };
+
+export type Storage = {
+  tasks: Task[];
+};
